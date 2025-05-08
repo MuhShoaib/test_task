@@ -2,8 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:test_task/constants/images.dart';
 import 'package:test_task/utils/size_config.dart';
 
-class SplashView extends StatelessWidget {
+import '../home/home.dart';
+
+class SplashView extends StatefulWidget {
   const SplashView({super.key});
+
+  @override
+  State<SplashView> createState() => _SplashViewState();
+}
+
+class _SplashViewState extends State<SplashView> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const HomeView()),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +47,11 @@ class SplashView extends StatelessWidget {
                 ),
               ),
             ),
-
             Positioned(
               top: SizeConfig.heightMultiplier * 10,
               left: 0,
               right: 0,
-              child: Center(
+              child: const Center(
                 child: Text(
                   'My Store',
                   style: TextStyle(
@@ -46,7 +63,6 @@ class SplashView extends StatelessWidget {
                 ),
               ),
             ),
-
             Positioned(
               bottom: SizeConfig.heightMultiplier * 15,
               left: 0,
@@ -55,7 +71,7 @@ class SplashView extends StatelessWidget {
                 padding: EdgeInsets.symmetric(
                   horizontal: SizeConfig.widthMultiplier * 10,
                 ),
-                child: Text(
+                child: const Text(
                   'Hos ass kan du baka tid has nastan alla Sveriges salonger och motagningar. Baka frisor, massage, skonhetsbehandingar, friskvard och mycket mer.',
                   textAlign: TextAlign.center,
                   maxLines: 5,
